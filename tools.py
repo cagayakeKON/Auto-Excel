@@ -33,7 +33,7 @@ def split_log(regex,path):
 
 def auto_create_folder(before_name,after_name):
     name_list = []
-    with open("./config","r",encoding='utf-8') as config_file:
+    with open("./name_list","r",encoding='utf-8') as config_file:
         name_list = config_file.readlines()
     for name in name_list:
         now_file_name = before_name+name.strip("\n")+after_name
@@ -110,7 +110,15 @@ def paste_log_to_excel(path):
                 ws[f"B{index+26}"] = line
                 ws["B25"] = ""
             wb.save(file_name)     
-            
+
+
+
+def replace_str_for_all_excel(path,mode,ecxcel_name_regex,check_number_regex,sheet_name,replaced_str):
+    """替换文件里里所有匹配正则表达式的字符,模式1为根据文件夹名字匹配正则表达式，
+    拿出关键信息进行替换，模式二是直接替换成指定字符串"""
+    pass
+
+
 #paste_log_to_excel("C:/Users/001496-liteng/Desktop/Bridgestone/STEF/1115")
 #auto_create_folder("No.205_","")
 #repalce_all_excel("C:/Users/001496-liteng/Desktop/Bridgestone/STEF/1115")
