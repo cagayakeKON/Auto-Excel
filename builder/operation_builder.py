@@ -1,5 +1,2 @@
 class OperationBuilder():
-    
-    def set_path():
-        
-
+    pass

@@ -121,6 +121,6 @@ def replace_str_for_all_excel(path,mode,ecxcel_name_regex,check_number_regex,she
 
 #paste_log_to_excel("C:/Users/001496-liteng/Desktop/Bridgestone/STEF/1115")
 #auto_create_folder("No.205_","")
-repalce_all_excel("C:/Users/001496-liteng/Desktop/Bridgestone/STEF/1111")
+#repalce_all_excel("C:/Users/001496-liteng/Desktop/Bridgestone/STEF/1111")
 #auto_rename_file("C:/Users/001496-liteng/Desktop/Bridgestone/STEF/1115","エビデンス_CMCA740B01_得意先マスタ申請WF結果更新(一括)（更新）チェックNo.205_","cmca740btest_no205_")
 #split_log("",path="C:/Users/001496-liteng/Desktop/Bridgestone/STEF/1115")

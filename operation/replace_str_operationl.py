@@ -3,12 +3,14 @@ from operation.operation import Operation
 
 
 class ReplaceStrOperation(Operation):
-    def __init__(self,file_path,regex,text_after_replacement,priority = 0):
-        self.file_path = file_path
+    def __init__(self,regex,text_after_replacement,priority = 0):
         self.priority = priority
         self.regex = regex 
         self.text_after_replacement = text_after_replacement
-        
+    
+    def set_path(self,path):
+        self.path = path
+    
     def execute(self):
         pattern = re.compile(self.regex)       
         if self._file_path[-4:]=="xlsx":    
