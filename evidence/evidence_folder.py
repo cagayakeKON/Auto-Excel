@@ -1,19 +1,20 @@
 import re,os
+from evidence.operation import Operation
 
-class EvidenceFolder():
-    def __init__(self,mode,root_path,regex,folder_name):
+class EvidenceFolder(Operation):
+    def __init__(self,root_path,folder_name,regex):
         self.root_path = root_path
-        self.regex = regex
-        self.check_number = re.compile(regex)
         self.folder_name = folder_name
-
-    def __init__(self,mode,src):
-        pass
-
-    def change_self_folder_name(self,new_folder_name):
-        self.folder_name = new_folder_name
-        os.rename(os.path.join(self.root_path,self.folder_name),os.path.join(self.root_path,new_folder_name))
-
+        self.regex = regex
+        self._preparation = []
+        self._opration = []
+        
+    def execute(self):
+        for task in self._preparation:
+            task.execute()
+        for task in self._opration:
+            task.execute()
+    
     @property
     def full_path(self):
         return os.path.join(self.root_path,self.folder_name)
@@ -26,5 +27,3 @@ class EvidenceFolder():
         else :
             return ""
 
-    def __list_all_file():
-        pass

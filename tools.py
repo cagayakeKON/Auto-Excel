@@ -70,17 +70,17 @@ def repalce_all_excel(path):
     file_list = __find_all_file(path)
     for file_name in file_list:
         number = number_pattern.findall(file_name)
-        if(file_name[-4:]=="xlsx"):    
+        if(file_name[-4:]=="xlsx") and re.compile('\$').search(file_name) is None:    
             wb = openpyxl.load_workbook(file_name)
-            ws = wb["異常系"]
+            ws = wb["ケース１ (2)"]
             i = 0
             for r in range(1,ws.max_row+1):
                 for c in range(1,ws.max_column+1):
                     s = ws.cell(r,c).value
                     if not isinstance(s,str):
                         s = str(s)
-                    if s != None and "1017" in s: 
-                        ws.cell(r,c).value = s.replace("1017",number[0]) 
+                    if s != None and "・確定・車種車番メンテ呼出ボタン押下" in s: 
+                        ws.cell(r,c).value = s.replace("・確定・車種車番メンテ呼出ボタン押下","・確定ボタン押下") 
                         print("row {} col {} : {}".format(r,c,s))
                         i += 1
                 wb.save(file_name)
@@ -121,6 +121,6 @@ def replace_str_for_all_excel(path,mode,ecxcel_name_regex,check_number_regex,she
 
 #paste_log_to_excel("C:/Users/001496-liteng/Desktop/Bridgestone/STEF/1115")
 #auto_create_folder("No.205_","")
-#repalce_all_excel("C:/Users/001496-liteng/Desktop/Bridgestone/STEF/1115")
+repalce_all_excel("C:/Users/001496-liteng/Desktop/Bridgestone/STEF/1111")
 #auto_rename_file("C:/Users/001496-liteng/Desktop/Bridgestone/STEF/1115","エビデンス_CMCA740B01_得意先マスタ申請WF結果更新(一括)（更新）チェックNo.205_","cmca740btest_no205_")
-split_log("",path="C:/Users/001496-liteng/Desktop/Bridgestone/STEF/1115")
+#split_log("",path="C:/Users/001496-liteng/Desktop/Bridgestone/STEF/1115")
