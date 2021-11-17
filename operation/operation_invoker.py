@@ -15,8 +15,10 @@ class OperationInvoker():
     def remove_operation(self, cmd):
         self._operation.remove(cmd)
   
-    def run_command(self):
+    def run_command(self,path):
         for cmd in self._operation:
+            cmd.file_path = path
             cmd.execute()
         for cmd in self._preparing_for_operation:
+            cmd.file_path = path
             cmd.execute()

@@ -6,14 +6,13 @@ from operation.operation import Operation
 
 
 class ReplaceStrOperation(Operation):
-    def __init__(self,regex,text_after_replacement,file_path,priority = 0):
+    def __init__(self,regex,text_after_replacement,file_path = "",priority = 0):
         self.file_path = file_path
         self.priority = priority
         self.regex = regex 
         self.text_after_replacement = text_after_replacement
     
     def execute(self):
-        self.file_path = self.file_path[0]
         pattern = re.compile(self.regex)       
         if self.file_path[-4:]=="xlsx":    
             wb = openpyxl.load_workbook(self.file_path)

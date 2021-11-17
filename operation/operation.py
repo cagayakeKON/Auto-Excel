@@ -1,9 +1,7 @@
-from abc import ABCMeta, abstractmethod
-
-class Operation(object):
+class Operation():
     
-    __metaclass__ = ABCMeta
-    
-    @abstractmethod
-    def execute(self):
+    def __init__(self) -> None:
+        self.file_path = ""
+        
+    def execute(self,path):
         pass
