@@ -3,7 +3,7 @@ import re
 import shutil
 import openpyxl
 
-def __find_all_file(base):
+def find_all_file(base):
     file_list = []
     for root, ds, fs in os.walk(base):
         for f in fs:
@@ -15,7 +15,7 @@ def __find_all_file(base):
 def split_log(regex,path):
     string_list = []
     temp = []
-    file_list = __find_all_file(path)
+    file_list = find_all_file(path)
     pattern = re.compile(r"(?<=_)\d{4}")
     i = 1
     for index, file_name in enumerate(file_list):
@@ -44,7 +44,7 @@ def auto_create_folder(before_name,after_name):
 def auto_rename_file(path,before_name,tsv_before_name):
     string_list = []
     temp = []
-    file_list = __find_all_file(path)
+    file_list = find_all_file(path)
     number_pattern = re.compile(r"(?<=_)\d{4}")
     excel_name_pattern = re.compile(r"(?<=_)\d{4}\(.+\)")
     for root, ds, fs in os.walk(path):
@@ -67,7 +67,7 @@ def auto_rename_file(path,before_name,tsv_before_name):
       
 def repalce_all_excel(path):
     number_pattern = re.compile(r"(?<=_)\d{4}")
-    file_list = __find_all_file(path)
+    file_list = find_all_file(path)
     for file_name in file_list:
         number = number_pattern.findall(file_name)
         if(file_name[-4:]=="xlsx") and re.compile('\$').search(file_name) is None:    
@@ -89,7 +89,7 @@ def repalce_all_excel(path):
 
 def paste_log_to_excel(path):
     number_pattern = re.compile(r"(?<=_)\d{4}")
-    file_list = __find_all_file(path)
+    file_list = find_all_file(path)
         
     for file_name in file_list:
         if file_name[-4:]=="xlsx":    
